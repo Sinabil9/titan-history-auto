@@ -177,8 +177,11 @@ def make_video(images,wav,srt,out):
     listfile.write_text('\n'.join(f"file '{p.as_posix()}'" for p in segs),encoding='utf-8')
     silent=WORK/'silent.mp4'
     run(['ffmpeg','-y','-f','concat','-safe','0','-i',str(listfile),'-c','copy',str(silent)])
-    # Copy SRT into work with simple filename to avoid filter escaping problems.
-    local_srt=WORK/'captions.srt'; shutil.copy2(srt,local_srt)
+# The subtitle file is already created at work/captions.srt.
+# Only copy it when a different source path is supplied.
+local_srt=WORK/'captions.srt'
+if Path(srt).resolve() != local_srt.resolve():
+    shutil.copy2(srt,local_srt)
     run(['ffmpeg','-y','-i',str(silent),'-i',str(wav),'-vf',
          "subtitles=work/captions.srt:force_style='FontName=Arial,FontSize=18,Outline=2,Shadow=1,Alignment=2,MarginV=85'",
          '-c:v','libx264','-preset','veryfast','-crf','23','-c:a','aac','-b:a','160k','-shortest','-movflags','+faststart',str(out)])
