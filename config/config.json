@@ -1,0 +1,14 @@
+{
+  "youtube_privacy": "public",
+  "max_topic_attempts": 8,
+  "target_words_min": 105,
+  "target_words_max": 135,
+  "min_commons_images": 5,
+  "width": 720,
+  "height": 1280,
+  "fps": 30,
+  "speech_rate": 155,
+  "piper_voice": "en_US-lessac-medium",
+  "use_ollama": true,
+  "ollama_model": "qwen3:1.7b"
+}

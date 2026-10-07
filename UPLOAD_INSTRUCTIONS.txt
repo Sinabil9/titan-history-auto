@@ -1,0 +1,16 @@
+FILES TO UPLOAD TO PUBLIC GITHUB:
+.gitignore
+requirements.txt
+main.py
+youtube_auth.py
+AUTH_LOCAL_WINDOWS.bat
+README_FA.txt
+config/config.json
+config/topics_catalog.json
+state/history.json
+scripts/write_token.py
+.github/workflows/titan.yml
+
+NEVER UPLOAD:
+config/client_secret.json
+config/youtube_token.json
